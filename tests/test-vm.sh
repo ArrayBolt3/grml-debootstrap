@@ -29,7 +29,7 @@ bailout() {
     ps --pid="${QEMU_PID}" -o pid= | grep -q '.' && kill "${QEMU_PID:-}"
   fi
 
-  rm -rf "${TEST_TMPDIR}"
+  sudo rm -rf "${TEST_TMPDIR}"
 
   [ -n "${1:-}" ] && EXIT_CODE="$1" || EXIT_CODE=1
   exit "$EXIT_CODE"
