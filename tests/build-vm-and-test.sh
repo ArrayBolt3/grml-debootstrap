@@ -52,11 +52,7 @@ RELEASE="${RELEASE:-trixie}"
 
 RASPI="${RASPI:-no}"
 
-if [ "${RASPI}" = 'yes' ]; then
-  TARGET="${TARGET:-rpi.img}"
-else
-  TARGET="${TARGET:-qemu.img}"
-fi
+TARGET="${TARGET:-qemu.img}"
 
 if [ "$1" == "run" ]; then
   # Debian version on which grml-debootstrap will *run*

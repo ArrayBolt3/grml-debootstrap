@@ -98,22 +98,24 @@ jobs:
       name: "Setup test environment"
 
     - run: ./tests/build-vm-and-test.sh run
-      name: "Build VM image using grml-debootstrap on host ${{matrix.host_release}} for ${{matrix.release}}"
+      name: "Build VM image using grml-debootstrap on host ${{matrix.host_release}} for ${{matrix.release}}. For raspi? ${{matrix.raspi}}"
       env:
         HOST_RELEASE: ${{matrix.host_release}}
         RELEASE: ${{matrix.release}}
+        RASPI: ${{matrix.raspi}}
 
     - run: ./tests/build-vm-and-test.sh test
       id: build_vm_and_test_test
       name: "Test built VM image for ${{matrix.release}}"
       env:
         RELEASE: ${{matrix.release}}
+        RASPI: ${{matrix.raspi}}
 
     - name: Archive VM image on failure
       uses: actions/upload-artifact@v4
       if: always() && (steps.build_vm_and_test_test.outcome == 'failure')
       with:
-        name: vm-image-${{matrix.host_release}}-${{matrix.release}}-${{matrix.runner}}
+        name: vm-image-${{matrix.host_release}}-${{matrix.release}}-${{matrix.runner}}-raspi_${{matrix.raspi}}
         if-no-files-found: error
         path: qemu.img
         retention-days: 5
@@ -122,6 +124,6 @@ jobs:
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: vm-results-${{matrix.host_release}}-${{matrix.release}}-${{matrix.runner}}
+        name: vm-results-${{matrix.host_release}}-${{matrix.release}}-${{matrix.runner}}-raspi_${{matrix.raspi}}
         if-no-files-found: error
         path: tests/results/
