@@ -6,9 +6,9 @@
 
 set -eu -o pipefail
 
-if [ "$#" -ne 2 ]; then
+if [ "$#" -ne 3 ]; then
   echo "$0: Invalid arguments" >&2
-  echo "Expect: $0 VM_IMAGE VM_HOSTNAME" >&2
+  echo "Expect: $0 VM_IMAGE VM_HOSTNAME RASPI" >&2
   exit 1
 fi
 set -x
