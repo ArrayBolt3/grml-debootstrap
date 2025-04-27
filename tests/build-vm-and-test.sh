@@ -53,9 +53,9 @@ RELEASE="${RELEASE:-trixie}"
 RASPI="${RASPI:-no}"
 
 if [ "${RASPI}" = 'yes' ]; then
-  TARGET="${TARGET:-qemu.img}"
-else
   TARGET="${TARGET:-rpi.img}"
+else
+  TARGET="${TARGET:-qemu.img}"
 fi
 
 if [ "$1" == "run" ]; then
