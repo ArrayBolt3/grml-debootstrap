@@ -77,7 +77,7 @@ if [ "${DPKG_ARCHITECTURE}" = "amd64" ]; then
   qemu_command+=( -machine q35 )
 elif [ "${DPKG_ARCHITECTURE}" = "arm64" ]; then
   if [ "$RASPI" = 'yes' ]; then
-    if ! rpi_bootdata="$(./tests/extract-rpi-bootdata.sh "$VM_IMAGE")"; then
+    if ! rpi_bootdata="$("$TEST_PWD"/tests/extract-rpi-bootdata.sh "$VM_IMAGE")"; then
       echo "E: could not extract RPi boot data"
       exit 1
     fi
