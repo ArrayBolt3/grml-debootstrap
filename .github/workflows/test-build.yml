@@ -75,7 +75,7 @@ jobs:
           - runner: ubuntu-24.04-arm
             release: buster
           # don't try to do raspi tests on amd64
-          - runner:ubuntu-latest
+          - runner: ubuntu-latest
             raspi: yes
           # don't do raspi tests on <= bookworm hosts, needs at least QEMU 9.x
           - host_release: bookworm

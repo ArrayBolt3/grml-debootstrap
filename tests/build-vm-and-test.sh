@@ -74,7 +74,7 @@ if [ "$1" == "run" ]; then
     -e TERM="$TERM" \
     -w /code \
     debian:"$HOST_RELEASE" \
-    bash -c './tests/docker-install-deb.sh '"$DEB_NAME"' && ./tests/docker-build-vm.sh '"$(id -u)"' '"/code/$TARGET"' '"$RELEASE" "$RASPI"
+    bash -c './tests/docker-install-deb.sh '"$DEB_NAME"' && ./tests/docker-build-vm.sh '"$(id -u)"' '"/code/$TARGET"' '"$RELEASE"' '"$RASPI"
 
 elif [ "$1" == "test" ]; then
   # run tests from inside Debian system
