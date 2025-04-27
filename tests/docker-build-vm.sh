@@ -25,18 +25,15 @@ echo " ****************************************************************** "
 echo " * Running grml-debootstrap"
 
 if [ "$RASPI" = 'yes' ]; then
-  filetype='rpifile'
-  non_free='--non-free'
+  extra_buildopts='--rpifile --non-free'
 else
-  filetype='vmfile'
-  non_free=''
+  extra_buildopts='--vmfile'
 fi
 
 grml-debootstrap \
   --debug \
   --force \
-  --"${filetype}" \
-  "${non_free}" \
+  ${extra_buildopts} \
   --imagesize 3G \
   --target "$TARGET" \
   --bootappend "console=ttyS0,115200 console=tty0 vga=791" \
