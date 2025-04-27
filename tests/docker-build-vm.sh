@@ -6,9 +6,9 @@
 
 set -eu -o pipefail
 
-if [ "$#" -ne 3 ]; then
+if [ "$#" -ne 4 ]; then
   echo "$0: Invalid arguments" >&2
-  echo "Expect: $0 HOST_UID TARGET RELEASE" >&2
+  echo "Expect: $0 HOST_UID TARGET RELEASE RASPI" >&2
   exit 1
 fi
 HOST_UID="$1"
