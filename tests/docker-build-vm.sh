@@ -14,6 +14,7 @@ fi
 HOST_UID="$1"
 TARGET="$2"
 RELEASE="$3"
+RASPI="$4"
 
 set -x
 
@@ -23,11 +24,17 @@ MIRROR='https://deb.debian.org/debian'
 echo " ****************************************************************** "
 echo " * Running grml-debootstrap"
 
+if [ "$RASPI" = 'yes' ]; then
+  filetype='rpifile'
+else
+  filetype='vmfile'
+fi
+
 grml-debootstrap \
   --debug \
   --force \
-  --vmfile \
-  --vmsize 3G \
+  --"${filetype}" \
+  --imagesize 3G \
   --target "$TARGET" \
   --bootappend "console=ttyS0,115200 console=tty0 vga=791" \
   --password grml \
